@@ -1,0 +1,62 @@
+# Test cases for text_indentation function
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+# Test case 1: Text with a period ('.') followed by a space
+>>> text_indentation("This is a test. It should work.")
+This is a test.
+<BLANKLINE>
+It should work.
+<BLANKLINE>
+
+# Test case 2: Text with multiple periods ('.') and a question mark ('?')
+>>> text_indentation("What is your name? My name is John. John Doe.")
+What is your name?
+<BLANKLINE>
+My name is John.
+<BLANKLINE>
+John Doe.
+<BLANKLINE>
+
+# Test case 3: Text with a colon (':')
+>>> text_indentation("The options are: red, green, and blue.")
+The options are:
+<BLANKLINE>
+red, green, and blue.
+<BLANKLINE>
+
+# Test case 4: Text with no punctuation marks (should not change)
+>>> text_indentation("This is a test with no punctuation.")
+This is a test with no punctuation.
+<BLANKLINE>
+
+# Test case 5: Text with a period and a colon
+>>> text_indentation("Please read the instructions carefully. Follow the steps:")
+Please read the instructions carefully.
+<BLANKLINE>
+Follow the steps:
+<BLANKLINE>
+
+# Test case 6: Text with a question mark and a colon
+>>> text_indentation("What is your plan for today? Plan your day: work, study, and relax.")
+What is your plan for today?
+<BLANKLINE>
+Plan your day:
+<BLANKLINE>
+work, study, and relax.
+<BLANKLINE>
+
+# Test case 7: Empty text (should not change)
+>>> text_indentation("")
+
+# Test case 8: Text with special characters and no punctuation marks
+>>> text_indentation("The @ symbol is used in email addresses. #Hashtags are popular on social media.")
+The @ symbol is used in email addresses.
+<BLANKLINE>
+#Hashtags are popular on social media.
+<BLANKLINE>
+
+# Test case 9: Text with leading and trailing spaces (should trim them)
+>>> text_indentation("  This is a test with spaces at the beginning and end.  ")
+This is a test with spaces at the beginning and end.
+<BLANKLINE>
