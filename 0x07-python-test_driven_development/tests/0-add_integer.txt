@@ -1,0 +1,42 @@
+# Test cases for add_integer function
+
+Importing function from the module:
+ >>> add_integer = __import__('0-add_integer').add_integer
+
+# Test case 1: Adding two integers
+>>> add_integer(1, 2)
+3
+
+# Test case 2: Adding an integer and the default value (98)
+>>> add_integer(100, -2)
+98
+
+# Test case 3: Adding an integer and the default value (98)
+>>> add_integer(2)
+100
+
+# Test case 4: Adding two floats
+>>> add_integer(100.3, -2)
+98
+
+# Test case 5: Trying to add an integer and a string (should raise a TypeError)
+>>> add_integer(4, "School")
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+
+# Test case 6: Trying to add None (should raise a TypeError)
+>>> add_integer(None)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+# Adding a letter and a number (a = 'c' and b = 1)
+>>> add_integer('c', 1)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+# Adding two negative floats (a = -10.5 and b = -2)
+>>> add_integer(-10.5, -2)
+-12
