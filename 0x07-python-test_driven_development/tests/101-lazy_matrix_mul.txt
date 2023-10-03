@@ -1,0 +1,57 @@
+# Test cases for lazy_matrix_mul function using NumPy
+
+>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+# Test case 1: Valid matrix multiplication
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+[[7, 10], [15, 22]]
+
+# Test case 2: Valid matrix multiplication with different dimensions
+>>> lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+[[13, 16]]
+
+# Test case 3: Empty matrix m_a (should raise ValueError)
+>>> lazy_matrix_mul([], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+    ...
+ValueError: m_a and m_b can't be multiplied
+
+# Test case 4: Empty matrix m_b (should raise ValueError)
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [])
+Traceback (most recent call last):
+    ...
+ValueError: m_a and m_b can't be multiplied
+
+# Test case 5: Invalid matrix m_a (contains a string, should raise ValueError)
+>>> lazy_matrix_mul([[1, 2], ['a', 4]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+    ...
+ValueError: m_a and m_b can't be multiplied
+
+# Test case 6: Invalid matrix m_b (contains a string, should raise ValueError)
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 'b']])
+Traceback (most recent call last):
+    ...
+ValueError: m_a and m_b can't be multiplied
+
+# Test case 7: Non-rectangular matrix m_a (should raise ValueError)
+>>> lazy_matrix_mul([[1, 2, 3], [4, 5]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+    ...
+ValueError: m_a and m_b can't be multiplied
+
+# Test case 8: Non-rectangular matrix m_b (should raise ValueError)
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2, 3], [4, 5]])
+Traceback (most recent call last):
+    ...
+ValueError: m_a and m_b can't be multiplied
+
+# Test case 9: Incompatible matrix dimensions (should raise ValueError)
+>>> lazy_matrix_mul([[1, 2, 3], [4, 5, 6]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+    ...
+ValueError: m_a and m_b can't be multiplied
+
+# Test case 10: Matrix multiplication with negative numbers using NumPy
+>>> lazy_matrix_mul([[1, -2], [-3, 4]], [[1, 2], [3, -4]])
+[[-5, 10], [9, -22]]
