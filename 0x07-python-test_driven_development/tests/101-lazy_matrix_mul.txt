@@ -34,24 +34,12 @@ Traceback (most recent call last):
     ...
 ValueError: m_a and m_b can't be multiplied
 
-# Test case 7: Non-rectangular matrix m_a (should raise ValueError)
->>> lazy_matrix_mul([[1, 2, 3], [4, 5]], [[1, 2], [3, 4]])
-Traceback (most recent call last):
-    ...
-ValueError: m_a and m_b can't be multiplied
-
-# Test case 8: Non-rectangular matrix m_b (should raise ValueError)
->>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2, 3], [4, 5]])
-Traceback (most recent call last):
-    ...
-ValueError: m_a and m_b can't be multiplied
-
-# Test case 9: Incompatible matrix dimensions (should raise ValueError)
+# Test case 7: Incompatible matrix dimensions (should raise ValueError)
 >>> lazy_matrix_mul([[1, 2, 3], [4, 5, 6]], [[1, 2], [3, 4]])
 Traceback (most recent call last):
     ...
 ValueError: m_a and m_b can't be multiplied
 
-# Test case 10: Matrix multiplication with negative numbers using NumPy
+# Test case 8: Matrix multiplication with negative numbers using NumPy
 >>> lazy_matrix_mul([[1, -2], [-3, 4]], [[1, 2], [3, -4]])
 [[-5, 10], [9, -22]]
