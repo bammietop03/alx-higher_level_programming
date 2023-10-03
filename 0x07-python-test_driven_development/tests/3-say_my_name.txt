@@ -1,0 +1,47 @@
+# Test cases for say_my_name function
+
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+# Test case 1: Print full name
+>>> say_my_name("John", "Smith")
+My name is John Smith
+
+# Test case 2: Print full name with different names
+>>> say_my_name("Walter", "White")
+My name is Walter White
+
+# Test case 3: Print only the first name
+>>> say_my_name("Bob")
+My name is Bob
+
+# Test case 4: Print full name with empty last name
+>>> say_my_name("Alice", "")
+My name is Alice
+
+# Test case 5: Print full name with space in first name
+>>> say_my_name("Mary Jane", "Watson")
+My name is Mary Jane Watson
+
+# Test case 6: Print full name with space in last name
+>>> say_my_name("Peter", "Parker Jr.")
+My name is Peter Parker Jr.
+
+# Test case 7: Print full name with special characters
+>>> say_my_name("Bruce", "Wayne/Batman")
+My name is Bruce Wayne/Batman
+
+# Test case 8: Print full name with digits (should raise a TypeError)
+>>> say_my_name(123, 456)
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+# Test case 9: Print full name with a digit in last name (should raise a TypeError)
+>>> say_my_name("Clark", 5)
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+
+# Test case 10: Print full name with special characters in both names
+>>> say_my_name("!@#$%", "&*()")
+My name is !@#$% &*()
