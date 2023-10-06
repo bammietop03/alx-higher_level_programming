@@ -40,3 +40,31 @@ TypeError: a must be an integer
 # Adding two negative floats (a = -10.5 and b = -2)
 >>> add_integer(-10.5, -2)
 -12
+
+# Adding two float numbers (a = 1.2 and b = 4.2)
+>>> add_integer(1.2, 4.2)
+5
+
+# Test 11: Calling add_integer with None as the first argument (should raise TypeError)
+>>> add_integer(None, 7)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+# Test 12: Adding two floats that result in NaN (should return NaN)
+>>> add_integer(float('nan'), float('nan'))
+Traceback (most recent call last):
+    ...
+ValueError: cannot convert float NaN to integer
+
+# Test 13: Adding two floats that result in positive infinity
+>>> add_integer(float('inf'), float('inf'))
+Traceback (most recent call last):
+    ...
+OverflowError: cannot convert float infinity to integer
+
+# Test 14: Adding two floats that result in negative infinity (should return negative infinity)
+>>> add_integer(float('-inf'), float('-inf'))
+Traceback (most recent call last):
+    ...
+OverflowError: cannot convert float infinity to integer

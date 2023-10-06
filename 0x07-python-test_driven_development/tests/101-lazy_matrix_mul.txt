@@ -43,3 +43,122 @@ ValueError: m_a and m_b can't be multiplied
 # Test case 8: Matrix multiplication with negative numbers using NumPy
 >>> lazy_matrix_mul([[1, -2], [-3, 4]], [[1, 2], [3, -4]])
 [[-5, 10], [9, -22]]
+
+# Test 2: Multiplying identity matrices (should return the same matrix)
+>>> identity_matrix = [[1, 0], [0, 1]]
+>>> m_a = [[2, 3], [4, 5]]
+>>> lazy_matrix_mul(identity_matrix, m_a)
+array([[2, 3],
+       [4, 5]])
+
+# Test 3: Multiplying matrices with all zero elements (should return a matrix with all zeros)
+>>> zero_matrix = [[0, 0], [0, 0]]
+>>> m_a = [[1, 2], [3, 4]]
+>>> lazy_matrix_mul(zero_matrix, m_a)
+array([[0, 0],
+       [0, 0]])
+
+# Test 4: Multiplying matrices with large numbers for numeric precision
+>>> m_a = [[1e12, 2e12], [3e12, 4e12]]
+>>> m_b = [[2e12, 3e12], [4e12, 5e12]]
+>>> lazy_matrix_mul(m_a, m_b)
+array([[1.0e+25, 1.3e+25],
+       [2.2e+25, 2.9e+25]])
+
+# Test 5: Multiplying matrices with one of them being a 1x1 matrix
+>>> m_a = [[2]]
+>>> m_b = [[3, 4]]
+>>> lazy_matrix_mul(m_a, m_b)
+array([[6, 8]])
+
+# Test 6: Multiplying matrices with one of them being an identity matrix
+>>> m_a = [[1, 2], [3, 4]]
+>>> identity_matrix = [[1, 0], [0, 1]]
+>>> lazy_matrix_mul(m_a, identity_matrix)
+array([[1, 2],
+       [3, 4]])
+
+# Test : Multiplying matrices with one of them being a matrix of ones
+>>> m_a = [[2, 2], [4, 4]]
+>>> ones_matrix = [[1, 1], [1, 1]]
+>>> lazy_matrix_mul(m_a, ones_matrix)
+array([[4, 4],
+       [8, 8]])
+
+# Test : Multiplying matrices with an empty matrix (should raise ValueError)
+>>> m_a = []
+>>> m_b = [[1, 2], [3, 4]]
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+    ...
+ValueError: shapes (0,) and (2,2) not aligned: 0 (dim 0) != 2 (dim 0)
+
+>>> m_a = [[]]
+>>> m_b = [[5, 6], [7, 8]]
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+    ...
+ValueError: shapes (1,0) and (2,2) not aligned: 0 (dim 1) != 2 (dim 0)
+
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = [[]]
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+    ...
+ValueError: shapes (2,2) and (1,0) not aligned: 2 (dim 1) != 1 (dim 0)
+
+# Test : Multiplying non-rectangle matrices (should raise TypeError)
+>>> m_a= [[5, 6], [7, 8]]
+>>> m_b = [[5, 6, 1], [7, 8]]
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+    ...
+ValueError: setting an array element with a sequence.
+
+# Test : Multiplying matrices with non-numeric elements (should raise TypeError)
+>>> m_a = [['a', 2], [3, 4]]
+>>> m_b = [[1, 2], [3, 'b']]
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+    ...
+TypeError: invalid data type for einsum
+
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = [[5, "6"], [7, 8]]
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+    ...
+TypeError: invalid data type for einsum
+
+>>> m_a = "Hello"
+>>> m_b = [[5, 6], [7, 8]]
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+    ...
+ValueError: Scalar operands are not allowed, use '*' instead
+
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = "World!"
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+    ...
+ValueError: Scalar operands are not allowed, use '*' instead
+
+# Test : Multiplying incompatible matrices (should raise ValueError)
+>>> m_a = [[5, 6], [7, 8]]
+>>> m_b = [[5, 6, 1], [7, 8]]
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+    ...
+ValueError: setting an array element with a sequence.
+
+# Test : Calling lazy_matrix_mul with insufficient arguments should throw a TypeError
+>>> lazy_matrix_mul([[1, 2], [3, 4]])
+Traceback (most recent call last):
+    ...
+TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+>>> lazy_matrix_mul()
+Traceback (most recent call last):
+    ...
+TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'

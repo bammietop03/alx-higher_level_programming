@@ -45,3 +45,6 @@ TypeError: last_name must be a string
 # Test case 10: Print full name with special characters in both names
 >>> say_my_name("!@#$%", "&*()")
 My name is !@#$% &*()
+
+>>> say_my_name("Bob", "Lenon")
+My name is Bob Lenon

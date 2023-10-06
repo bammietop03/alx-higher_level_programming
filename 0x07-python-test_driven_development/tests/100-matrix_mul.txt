@@ -55,3 +55,14 @@ ValueError: m_a and m_b can't be multiplied
 # Test case 10: Matrix multiplication with negative numbers
 >>> matrix_mul([[1, -2], [-3, 4]], [[1, 2], [3, -4]])
 [[-5, 10], [9, -22]]
+
+# Test 7: Calling matrix_mul with insufficient argument should raise TypeError
+>>> matrix_mul([[1]])
+Traceback (most recent call last):
+    ...
+TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+
+>>> matrix_mul()
+Traceback (most recent call last):
+    ...
+TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'

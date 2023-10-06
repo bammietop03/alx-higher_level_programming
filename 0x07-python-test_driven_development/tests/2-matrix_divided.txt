@@ -48,3 +48,24 @@ TypeError: Each row of the matrix must have the same size
 >>> matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 >>> matrix_divided(matrix, 1)
 [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]]
+
+# Test : Dividing a matrix with a string as the divisor (should raise TypeError)
+>>> matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+>>> div = '2'
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+    ...
+TypeError: div must be a number
+
+# Test : Missing one argument (should raise TypeError)
+>>> matrix = [[1, 2], [3, 4]]
+>>> matrix_divided(matrix)
+Traceback (most recent call last):
+    ...
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+# Test : Missing two arguments (should raise TypeError)
+>>> matrix_divided()
+Traceback (most recent call last):
+    ...
+TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
