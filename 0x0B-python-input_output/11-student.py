@@ -21,7 +21,7 @@ class Student:
                 if hasattr(self, attr):
                     result[attr] = getattr(self, attr)
             return result
-    
+
     def reload_from_json(self, json):
         """ reload from json """
         for key, value in json.items():
