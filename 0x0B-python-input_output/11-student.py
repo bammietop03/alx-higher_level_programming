@@ -23,5 +23,6 @@ class Student:
             return result
     
     def reload_from_json(self, json):
+        """ reload from json """
         for key, value in json.items():
             setattr(self, key, value)
