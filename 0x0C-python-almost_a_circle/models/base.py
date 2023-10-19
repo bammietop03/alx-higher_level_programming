@@ -64,38 +64,41 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        filename = cls.__name__ + ".csv"
-
-        with open(filename, 'w', newline='') as csvfile:
-            writer = csv.writer(csvfile)
-
-            if cls.__name__ == "Rectangle":
-                for obj in list_objs:
-                    writer.writerow([obj.id, obj.width, obj.height, obj.x,
-                                    obj.y])
-            elif cls.__name__ == "Square":
-                for obj in list_objs:
-                    writer.writerow([obj.id, obj.size, obj.x, obj.y])
+        filename = "{}.csv".format(cls.__name__)
+        data = []
+        if list_objs is not None:
+            for obj in list_objs:
+                dictionary = obj.to_dictionary()
+                data.append(dictionary)
+        rectangle_header = ['id', 'width', 'height', 'x', 'y']
+        square_header = ['id', 'size', 'x', 'y']
+        with open(filename, mode='w') as f:
+            if list_objs is None:
+                f.write("[]")
+            else:
+                if cls.__name__ == 'Rectangle':
+                    result = csv.DictWriter(f, fieldnames=rectangle_header)
+                elif cls.__name__ == 'Square':
+                    result = csv.DictWriter(f, fieldnames=square_header)
+                result.writeheader()
+                result.writerows(data)
 
     @classmethod
     def load_from_file_csv(cls):
-        filename = cls.__name__ + ".csv"
-
-        instances = []
+        filename = "{}.csv".format(cls.__name__)
+        instance_list = []
         try:
-            with open(filename, 'r', newline='') as csvfile:
-                reader = csv.reader(csvfile)
-                for row in reader:
-                    row = [int(value) for value in row]
-                    if cls.__name__ == "Rectangle":
-                        instances.append(cls.create(id=row[0], width=row[1],
-                                         height=row[2], x=row[3], y=row[4]))
-                    elif cls.__name__ == "Square":
-                        instances.append(cls.create(id=row[0], size=row[1],
-                                         x=row[2], y=row[3]))
+            with open(filename) as f:
+                result = csv.DictReader(f)
+                for row in result:
+                    row = dict(row)
+                    for key in row:
+                        row[key] = int(row[key])
+                    instance = cls.create(**row)
+                    instance_list.append(instance)
         except FileNotFoundError:
-            pass
-        return instances
+            return instance_list
+        return instance_list
 
     @staticmethod
     def draw(list_rectangles, list_squares):
