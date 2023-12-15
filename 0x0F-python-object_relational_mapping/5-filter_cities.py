@@ -16,9 +16,10 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     cursor.execute("SELECT cities.name \
-                    FROM cities, states \
-                    WHERE cities.state_id = states.id \
-                    AND states.name LIKE BINARY %s \
+                    FROM cities \
+                    JOIN states \
+                    ON cities.state_id = states.id \
+                    WHERE states.name LIKE BINARY %s \
                     ORDER BY cities.id ASC", (argv[4],))
 
     data = cursor.fetchall()
