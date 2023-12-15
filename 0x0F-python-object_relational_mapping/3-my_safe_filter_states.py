@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-# gets all states via python yee boi with your own state SAFE
-
+import sys
+import MySQLdb
 
 def main(args):
-    # gets all state stuff SAFELY
     if len(args) != 5:
         raise Exception("need 4 arguments!")
     db = MySQLdb.connect(host='localhost',
@@ -20,6 +19,4 @@ def main(args):
 
 
 if __name__ == "__main__":
-    import sys
-    import MySQLdb
     main(sys.argv)
