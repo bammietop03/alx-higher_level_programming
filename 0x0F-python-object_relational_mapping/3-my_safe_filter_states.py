@@ -10,7 +10,7 @@ if __name__ == "__main__":
     """
     Retrives the states table from database
     """
-    if len(argv) == 5:
+    if len(argv) != 5:
         raise Exception("Usage: python script.py <username> <password> <database> <state_name>")
         exit(1)
 
