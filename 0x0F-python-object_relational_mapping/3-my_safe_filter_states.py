@@ -11,7 +11,8 @@ if __name__ == "__main__":
     Retrives the states table from database
     """
     if len(argv) != 5:
-        raise Exception("Usage: python script.py <username> <password> <database> <state_name>")
+        print("Usage: script.py <username> <password> <database> <state_name>")
+        exit(1)
 
     db = MySQLdb.connect(host="localhost", user=argv[1],
                          port=3306, passwd=argv[2], db=argv[3])
