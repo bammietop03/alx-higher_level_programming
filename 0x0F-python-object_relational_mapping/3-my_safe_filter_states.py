@@ -4,31 +4,27 @@ a script that lists all states from the database hbtn_0e_0_usa
 """
 
 import MySQLdb
-import sys
+from sys import argv
 
 if __name__ == "__main__":
     """
     Retrives the states table from database
     """
-    if len(sys.argv) != 5:
-        print("Usage: script.py <username> <password> <database> <state_name>")
-    
-    try:
-        db = MySQLdb.connect(host="localhost", user=sys.argv[1],
-                             port=3306, passwd=sys.argv[2], db=sys.argv[3])
+    if len(argv) != 5:
+        raise Exception("need 4 arguments!")
 
-        cursor = db.cursor()
+    db = MySQLdb.connect(host="localhost", user=argv[1],
+                         port=3306, passwd=argv[2], db=argv[3])
 
-        cursor.execute("SELECT * FROM states WHERE name LIKE BINARY '{}' \
-                        ORDER BY states.id ASC".format(sys.argv[4]))
+    cursor = db.cursor()
 
-        data = cursor.fetchall()
+    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY '{}' \
+                    ORDER BY states.id ASC".format(argv[4]))
 
-        for row in data:
-            print(row)
+    data = cursor.fetchall()
 
-        cursor.close()
-        db.close()
+    for row in data:
+        print(row)
 
-    except MySQLdb.Error as e:
-        print("MySQL Error:", e)
+    cursor.close()
+    db.close()
