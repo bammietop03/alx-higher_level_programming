@@ -18,7 +18,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    data = session.query(State).filter(State.name.ilike('%a%'))
+    data = session.query(State).filter(State.name.contains('a'))
     
     if data is not None:
         for info in date:
