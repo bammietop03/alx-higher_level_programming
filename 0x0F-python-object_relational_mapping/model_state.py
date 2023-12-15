@@ -8,6 +8,7 @@ from sqlalchemy import Column, Integer, String
 
 Base = declarative_base()
 
+
 class State(Base):
     """
     State Class
