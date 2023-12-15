@@ -12,7 +12,6 @@ if __name__ == "__main__":
     """
     if len(sys.argv) != 5:
         print("Usage: script.py <username> <password> <database> <state_name>")
-        sys.exit(1)
     
     try:
         db = MySQLdb.connect(host="localhost", user=sys.argv[1],
@@ -33,4 +32,3 @@ if __name__ == "__main__":
 
     except MySQLdb.Error as e:
         print("MySQL Error:", e)
-        sys.exit(1)
