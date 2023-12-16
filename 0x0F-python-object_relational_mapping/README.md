@@ -35,7 +35,7 @@ In a Python file using MySQLdb, you can execute queries in a few steps:
 First, establish a connection to your MySQL database using MySQLdb. This involves providing the necessary connection details like host, username, password, and database name.
 
 	import MySQLdb
-	// Establish connection
+	...
 	db = MySQLdb.connect(host="your_host",
         	             user="your_username",
                 	     passwd="your_password",
@@ -45,6 +45,7 @@ First, establish a connection to your MySQL database using MySQLdb. This involve
 Next, create a cursor object to execute SQL queries.
 
 	cursor = db.cursor()
+	...
 
 3. Executing Queries:
 Now, you can execute SQL queries using the execute() method on the cursor.
@@ -60,8 +61,6 @@ For example, to retrieve data:
 Remember to commit any changes made (if necessary) and close the cursor and database connection when you're done.
 
 	db.commit()
-
-	# Close the cursor and database connection
 	cursor.close()
 	db.close()
 
@@ -78,9 +77,6 @@ Ensure you have the necessary packages installed. For SQLAlchemy with MySQL, you
 2. Connecting to MySQL Database:
 
 	from sqlalchemy import create_engine
-
-	# Create an engine to connect to a MySQL database
-	# Replace 'username', 'password', 'host', 'port', and 'database_name' with your MySQL connection details
 	engine = create_engine('mysql+mysqlconnector://username:password@host:port/database_name', echo=True)
 	Use can also use 'mysql+mysqldb'
 
@@ -90,10 +86,8 @@ Define a Python class representing the table structure. This will be your model 
 	from sqlalchemy.ext.declarative import declarative_base
 	from sqlalchemy import Column, Integer, String
 
-	# Create a base class for declarative class definitions
 	Base = declarative_base()
 
-	# Define a Person model
 	class Person(Base):
 	    __tablename__ = 'people'
 
