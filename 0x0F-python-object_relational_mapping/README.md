@@ -73,17 +73,20 @@ Replace "your_host", "your_username", "your_password", "your_database", and "you
 Certainly! Here's a step-by-step breakdown of using SQLAlchemy with MySQL:
 
 1. Installation:
+
 Ensure you have the necessary packages installed. For SQLAlchemy with MySQL, you need sqlalchemy and a compatible MySQL connector like mysql-connector-python.
 
 	pip install sqlalchemy mysql-connector-python
 
 2. Connecting to MySQL Database:
 
+Use can also use 'mysql+mysqldb'
+
 	from sqlalchemy import create_engine
 	engine = create_engine('mysql+mysqlconnector://username:password@host:port/database_name', echo=True)
-	Use can also use 'mysql+mysqldb'
 
 3. Creating a Table Model:
+
 Define a Python class representing the table structure. This will be your model that SQLAlchemy uses to interact with the database.
 
 	from sqlalchemy.ext.declarative import declarative_base
@@ -102,27 +105,31 @@ Define a Python class representing the table structure. This will be your model 
 4. Create Table in Database:
 Create the table in the database using the defined model.
 
-	# Create the table in the database
+Create the table in the database
+
 	Base.metadata.create_all(engine)
 
 5. Establishing a Session:
 
+Create a session to interact with the database
+
 	from sqlalchemy.orm import sessionmaker
 
-	# Create a session to interact with the database
 	Session = sessionmaker(bind=engine)
 	session = Session()
 
 6. Inserting Data:
 
-	# Add your details to the database
+Add your details to the database
+
 	me = Person(name='Your Name', age=25, occupation='Your Occupation')
 	session.add(me)
 	session.commit()
 
 7. Querying Data:
 
-	# Querying your data
+Querying your data
+
 	your_info = session.query(Person).filter_by(name='Your Name').first()
 	if your_info:
 	    print(f"Name: {your_info.name}, Age: {your_info.age}, Occupation: {your_info.occupation}")
@@ -131,7 +138,8 @@ Create the table in the database using the defined model.
 
 8. Closing the Session:
 
-	# Close the session
+Close the session
+
 	session.close()
 
 Replace 'username', 'password', 'host', 'port', and 'database_name' with your actual MySQL connection details. This set of steps demonstrates connecting to a MySQL database, defining a table model, creating a table, adding data, querying the data, and finally, closing the session. Adjust the table structure and columns based on your needs.
