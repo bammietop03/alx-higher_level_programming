@@ -35,7 +35,6 @@ In a Python file using MySQLdb, you can execute queries in a few steps:
 First, establish a connection to your MySQL database using MySQLdb. This involves providing the necessary connection details like host, username, password, and database name.
 
 	import MySQLdb
-
 	// Establish connection
 	db = MySQLdb.connect(host="your_host",
         	             user="your_username",
