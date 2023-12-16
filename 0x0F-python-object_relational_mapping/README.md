@@ -34,14 +34,16 @@ In a Python file using MySQLdb, you can execute queries in a few steps:
 1. Connecting to the Database:
 First, establish a connection to your MySQL database using MySQLdb. This involves providing the necessary connection details like host, username, password, and database name.
 
+Establish connection
+
 	import MySQLdb
-	...
 	db = MySQLdb.connect(host="your_host",
         	             user="your_username",
                 	     passwd="your_password",
         		     db="your_database")
 
 2. Creating a Cursor:
+
 Next, create a cursor object to execute SQL queries.
 
 	cursor = db.cursor()
@@ -58,6 +60,7 @@ For example, to retrieve data:
     		print(row)
 
 4. Handling Transactions:
+
 Remember to commit any changes made (if necessary) and close the cursor and database connection when you're done.
 
 	db.commit()
