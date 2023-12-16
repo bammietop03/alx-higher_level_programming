@@ -36,7 +36,7 @@ First, establish a connection to your MySQL database using MySQLdb. This involve
 
 	import MySQLdb
 
-	# Establish connection
+	// Establish connection
 	db = MySQLdb.connect(host="your_host",
         	             user="your_username",
                 	     passwd="your_password",
