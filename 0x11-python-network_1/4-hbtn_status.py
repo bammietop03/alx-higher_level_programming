@@ -6,8 +6,7 @@ import requests
 
 
 if __name__ == "__main__":
-    response = request.get('https://alx-intranet.hbtn.io/status')
-    data = response.text
+    data = request.get('https://alx-intranet.hbtn.io/status')
     print("Body response:")
-    print("\t- type: {}".format(type(data)))
-    print("\t- contnent: {}".format(data))
+    print("\t- type: {}".format(type(data.text)))
+    print("\t- contnent: {}".format(data.text))
